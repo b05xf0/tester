@@ -61,5 +61,3 @@ If you would like to contribute, please fork the repository and use a feature br
 ## License
 The tool is open-sourced under the [GNU LESSER GENERAL PUBLIC LICENSE Version 2.1](./LICENSE). Feel free to use, modify, and distribute as you see fit.
 
-## Author
-Laszlo Havasi - b05xf0@inf.elte.hu
