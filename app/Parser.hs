@@ -70,7 +70,7 @@ parseProp taskName src = case (name, taskName, source, mScore) of
   (_ , _, _ , Just score  ) -> Right $ mkProperty (name, taskName, source, score)
   where
     mScore :: Maybe Int
-    mScore = (readMaybe . unpack . T.takeWhile (/=' ') . T.takeWhileEnd (/='(')) heading
+    mScore = (readMaybe . unpack . T.takeWhile (/=')') . T.takeWhileEnd (/='(')) heading
 
     name = strip . T.takeWhile (/=' ') . unwords . drop 1 . words $ heading
     (heading : sourceLs) = lines src
