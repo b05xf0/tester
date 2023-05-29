@@ -1,0 +1,53 @@
+cabal-version:      2.4
+name:               tester
+version:            0.9.0.0
+synopsis:
+homepage:
+
+license:            NONE
+author:             László Havasi
+maintainer:         b05xf0@inf.elte.hu
+
+extra-source-files: CHANGELOG.md
+data-files: tester.sqlite
+data-dir: data
+
+executable tester
+    main-is:          Main.hs
+
+    other-modules:
+        Paths_tester
+        Commands
+        Data
+        Data.Property
+        Data.Task
+        Data.Tasklist
+        Data.Solution
+        Parser
+        Eval
+        Eval.Property
+        Eval.Task
+        Eval.Solution
+        Report
+        Random
+
+    default-extensions: OverloadedStrings, DeriveGeneric, InstanceSigs
+
+    build-depends:
+          base ^>=4.16.4.0
+        , optparse-applicative
+        , text
+        , time
+        , sqlite-simple
+        , directory
+        , filepath
+        , hint
+        , QuickCheck
+        , async
+        , aeson
+        , aeson-pretty
+        , bytestring
+        , random
+    hs-source-dirs:   app
+    ghc-options: -threaded -with-rtsopts=-maxN4
+    default-language: Haskell2010
