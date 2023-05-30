@@ -56,8 +56,8 @@ tester -h
 - filepath: for manipulating FilePath values in a cross-platform way
 
 ## Contributing
-If you would like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+If you would like to contribute, please fork the repository and use a feature branch.
 
 ## License
-The tool is open-sourced under the [GNU LESSER GENERAL PUBLIC LICENSE Version 2.1](./LICENSE). Feel free to use, modify, and distribute as you see fit.
+The tool is open-sourced under the [GNU LESSER GENERAL PUBLIC LICENSE Version 2.1](./LICENSE).
 
