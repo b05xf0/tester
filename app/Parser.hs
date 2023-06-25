@@ -1,13 +1,13 @@
-module Parser ( parseTasks ) where
+module Parser ( parseTasks, parseProp, parseTask, parseTasklist, breaksOn ) where
 
 import Prelude hiding ( lines, unlines, words, unwords )
 
-import Data.Text as T 
+import Data.Text as T
   ( Text
   , pack, unpack
   , words, unwords, lines, unlines
   , takeWhile, dropWhile, takeWhileEnd, dropWhileEnd, dropAround
-  , isPrefixOf, breakOn, strip )
+  , isPrefixOf, breakOn, strip, stripEnd )
 import Data.List as L ( takeWhile, dropWhile )
 import Text.Read ( readMaybe ) 
 
@@ -47,7 +47,8 @@ parseTask src = case (name, description, signature, solution, mScore, eProps) of
   (_ , _ , _ , "", _      , _       ) -> Left $ "Missing task solution: "    <> snd breakRest
   (_ , _ , _ , _ , Nothing, _       ) -> Left $ "Invalid task score: "       <> heading
   (_ , _ , _ , _ , _      , Left e  ) -> Left $ "Invalid property: "         <> e
-  (_ , _ , _ , _ , Just s , Right ps) -> Right (mkTask name description signature solution s, ps)
+  (_ , _ , _ , _ , Just s , Right []) -> Left $ "Missing properties: "       <> snd breakRest
+  (_ , _ , _ , _ , Just s , Right ps) -> Right (mkTask (name, description, signature, solution, s), ps)
   where
     mScore :: Maybe Int
     mScore = (readMaybe . unpack . T.takeWhile (/=')') . T.takeWhileEnd (/='(')) heading
@@ -55,7 +56,7 @@ parseTask src = case (name, description, signature, solution, mScore, eProps) of
     eProps :: Either ErrMsg [Property]
     eProps = mapM (parseProp name) (breaksOn  "-- prop_" $ snd breakRest'')
 
-    (heading : rest) = strip <$> lines src
+    (heading : rest) = stripEnd <$> lines src
     name = (dropAround (=='`') . T.dropWhileEnd (/='`') . T.dropWhile (/='`')) heading
     [description, signature, solution] = strip . fst <$> [breakRest, breakRest', breakRest'']
     breakRest   = breakOn "```haskell"  (unlines rest)
