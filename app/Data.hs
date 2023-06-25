@@ -106,8 +106,8 @@ getPropName = DP.name
 getPropSource :: Property -> Text
 getPropSource = DP.source
 
-mkTask :: ID -> Text -> Text -> Text -> Int -> Task
-mkTask name description signature solution score
+mkTask :: (ID, Text, Text, Text, Int) -> Task
+mkTask (name, description, signature, solution, score)
   = DT.Task name description signature solution score defaultTime
 
 getTaskName :: Task -> Text

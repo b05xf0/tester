@@ -14,7 +14,7 @@ data Property =
     , taskName      :: Text
     , source        :: Text
     , score         :: Int 
-    , dateUpdated   :: UTCTime } deriving (Show, Read, Generic)
+    , dateUpdated   :: UTCTime } deriving (Show, Read, Eq, Generic)
 
 instance FromJSON Property
 instance ToJSON Property

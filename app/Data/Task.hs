@@ -14,7 +14,7 @@ data Task =
   , signature   :: Text
   , solution    :: Text
   , score       :: Int 
-  , dateUpdated :: UTCTime } deriving (Show, Read, Generic)
+  , dateUpdated :: UTCTime } deriving (Show, Read, Eq, Generic)
 
 instance FromJSON Task
 instance ToJSON Task
