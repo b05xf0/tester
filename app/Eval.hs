@@ -91,7 +91,7 @@ runTests concurrently tasks = distribute runOnSolution
             m@[_, propModulePath] = [solModulePath, buildPropModulePath sIdx $ D.getPropName p]
 
 buildSolModulePath ::Int -> FilePath
-buildSolModulePath sIdx = "sol_" <> show sIdx <> ".hs"
+buildSolModulePath sIdx = "_sol_" <> show sIdx <> ".hs"
 
 buildPropModulePath :: Int  -> Text -> FilePath
-buildPropModulePath sIdx pName = "sol_" <> show sIdx <> "_" <> unpack pName <> ".hs"
+buildPropModulePath sIdx pName = "_sol_" <> show sIdx <> "_" <> unpack pName <> ".hs"
