@@ -54,7 +54,7 @@ sqlDeleteTasks :: Query
 sqlDeleteTasks = "DELETE FROM tasklist_task WHERE tasklist_title = ?"
 
 sqlSelectTasks :: Query
-sqlSelectTasks = "SELECT t.* from tasklist_task tl JOIN task t on tl.task_name = t.name where tl.tasklist_title = ?"
+sqlSelectTasks = "SELECT t.* from tasklist_task tl JOIN task t on tl.task_name = t.name where tl.tasklist_title = ? order by t.score"
 
 sqlSelect :: Query
 sqlSelect = "SELECT * from tasklist where title = ?"
