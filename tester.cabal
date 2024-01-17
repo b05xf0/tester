@@ -34,7 +34,7 @@ executable tester
     default-extensions: OverloadedStrings, DeriveGeneric, InstanceSigs
 
     build-depends:
-          base ^>=4.17.2.0
+          base ^>=4.19.0.0
         , optparse-applicative
         , text
         , time
@@ -72,7 +72,7 @@ test-suite tests
         Random
     default-extensions: OverloadedStrings, DeriveGeneric, InstanceSigs
     build-depends:
-          base ^>=4.17.2.0
+          base ^>=4.19.0.0
         , optparse-applicative
         , text
         , time
